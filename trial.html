@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Genre Search</title>
+</head>
+<body>
+    <h1>Book Genre Search</h1>
+    <form id="searchForm">
+        <label for="mainGenre">Choose a main genre:</label>
+        <select id="mainGenre" name="mainGenre">
+            <option value="Mystery/Thriller">Mystery/Thriller</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Dystopian Fiction">Dystopian Fiction</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Education">Education</option>
+            <option value="Romance">Romance</option>
+        </select>
+        
+        <div id="subGenres">
+            <!-- Education sub-genres -->
+            <div id="educationSubGenres" style="display: none;">
+                <p>Choose a sub-genre for Education:</p>
+                <label><input type="radio" name="educationSubGenre" value="Maths"> Maths</label><br>
+                <label><input type="radio" name="educationSubGenre" value="Science"> Science</label><br>
+                <label><input type="radio" name="educationSubGenre" value="History"> History</label><br>
+                <label><input type="radio" name="educationSubGenre" value="English"> English</label><br>
+            </div>
+
+            <!-- Romance sub-genres -->
+            <div id="romanceSubGenres" style="display: none;">
+                <p>Choose a sub-genre for Romance:</p>
+                <label><input type="radio" name="romanceSubGenre" value="Friends to Lovers"> Friends to Lovers</label><br>
+                <label><input type="radio" name="romanceSubGenre" value="Enemies to Lovers"> Enemies to Lovers</label><br>
+                <label><input type="radio" name="romanceSubGenre" value="Second Chance Romance"> Second Chance Romance</label><br>
+                <label><input type="radio" name="romanceSubGenre" value="Forbidden Love"> Forbidden Love</label><br>
+                <label><input type="radio" name="romanceSubGenre" value="Love Triangle"> Love Triangle</label><br>
+                <label><input type="radio" name="romanceSubGenre" value="Arranged Marriage"> Arranged Marriage</label><br>
+            </div>
+        </div>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const mainGenre = document.getElementById('mainGenre').value;
+            let searchUrl = `https://openlibrary.org/search.json?`;
+
+            if (mainGenre === 'Education') {
+                const educationSubGenre = document.querySelector('input[name="educationSubGenre"]:checked');
+                if (educationSubGenre) {
+                    searchUrl += `subject=${educationSubGenre.value}`;
+                }
+            } else if (mainGenre === 'Romance') {
+                const romanceSubGenre = document.querySelector('input[name="romanceSubGenre"]:checked');
+                if (romanceSubGenre) {
+                    searchUrl += `subject=${romanceSubGenre.value}`;
+                }
+            }
+
+            fetch(searchUrl)
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // Clear previous results
+
+            data.docs.forEach(book => {
+                const title = book.title;
+                const author = book.author_name ? book.author_name.join(', ') : 'Unknown Author';
+                const cover = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : 'No cover available';
+                
+                const bookDiv = document.createElement('div');
+                bookDiv.innerHTML = `
+                    <h3>${title}</h3>
+                    <p>Author(s): ${author}</p>
+                    <img src="${cover}" alt="Book cover">
+                    <hr>
+                `;
+                resultsDiv.appendChild(bookDiv);
+            });
+        }
+
+        // Show sub-genres based on the selected main genre
+        document.getElementById('mainGenre').addEventListener('change', function() {
+            const educationSubGenres = document.getElementById('educationSubGenres');
+            const romanceSubGenres = document.getElementById('romanceSubGenres');
+
+            educationSubGenres.style.display = 'none';
+            romanceSubGenres.style.display = 'none';
+
+            if (this.value === 'Education') {
+                educationSubGenres.style.display = 'block';
+            } else if (this.value === 'Romance') {
+                romanceSubGenres.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Search</title>
+    <style>
+        /* CSS styles for the layout */
+        header {
+            /* Style for the header section */
+            text-align: center;
+        }
+
+        nav {
+            /* Style for the navigation bar */
+            background-color: #f2f2f2;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        main {
+            /* Style for the main content section */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        footer {
+            /* Style for the footer section */
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Book Match</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Search</a></li>
+                <li><a href="yo.html">Best Sellers</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Book Search</h1>
+    <div>
+        <label for="searchInput">Enter book title:</label>
+        <input type="text" id="searchInput" placeholder="Enter book title">
+    </div>
+    <div>
+        <label for="genreSelect">Select genre:</label>
+        <select id="genreSelect">
+            <option value="">All</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <!-- Add more genre options here -->
+        </select>
+    </div>
+    <button onclick="searchBooks()">Search</button>
+    <div id="results"></div>
+
+    <script>
+        function searchBooks() {
+            const query = document.getElementById('searchInput').value;
+            const genre = document.getElementById('genreSelect').value;
+            let searchUrl = `https://openlibrary.org/search.json?q=${query}`;
+
+            if (genre) {
+                searchUrl += `&subject=${genre}`;
+            }
+
+            fetch(searchUrl)
+                .then(response => response.json())
+                .then(data => {
+                    displayResults(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // Clear previous results
+
+            data.docs.forEach(book => {
+                const title = book.title;
+                const author = book.author_name ? book.author_name.join(', ') : 'Unknown Author';
+                const cover = book.cover_i ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` : 'No cover available';
+                
+                const bookDiv = document.createElement('div');
+                bookDiv.innerHTML = `
+                    <h3>${title}</h3>
+                    <p>Author(s): ${author}</p>
+                    <img src="${cover}" alt="Book cover">
+                    <hr>
+                `;
+                resultsDiv.appendChild(bookDiv);
+            });
+        }
+    </script>
+</body>
+</html>
+
+
