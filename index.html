@@ -59,38 +59,46 @@
         <input type="text" id="searchInput" placeholder="Enter book title">
     </div>
     <div>
-        <label for="genreSelect">Select genre:</label>
-        <select id="genreSelect">
-            <option value="">All</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Mystery">Mystery</option>
-            <option value="Dystopian">Dystopian</option>
-            <option value="Comedy">Comedy</option>
-            <option value="Adventure">Adventure</option>
-            <option value="Romance">Romance</option>
-            <option value="Education">Education</option>
-        </select>
+        <label>Select genre:</label><br>
+        <input type="checkbox" id="genreFantasy" value="Fantasy">
+        <label for="genreFantasy">Fantasy</label><br>
+        <input type="checkbox" id="genreMystery" value="Mystery">
+        <label for="genreMystery">Mystery</label><br>
+        <input type="checkbox" id="genreDystopian" value="Dystopian">
+        <label for="genreDystopian">Dystopian</label><br>
+        <input type="checkbox" id="genreComedy" value="Comedy">
+        <label for="genreComedy">Comedy</label><br>
+        <input type="checkbox" id="genreAdventure" value="Adventure">
+        <label for="genreAdventure">Adventure</label><br>
+        <input type="checkbox" id="genreRomance" value="Romance">
+        <label for="genreRomance">Romance</label><br>
+        <input type="checkbox" id="genreEducation" value="Education">
+        <label for="genreEducation">Education</label><br>
+        <button onclick="searchBooks()">Search</button>
     </div>
     <button onclick="searchBooks()">Search</button>
     <div id="results"></div>
 
     <script>
         function searchBooks() {
-            const query = document.getElementById('searchInput').value;
-            const genre = document.getElementById('genreSelect').value;
-            let searchUrl = `https://openlibrary.org/search.json?q=${query}`;
+    const query = document.getElementById('searchInput').value;
+    const selectedGenres = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(checkbox => checkbox.value);
+    let searchUrl = `https://openlibrary.org/search.json?q=${query}`;
 
-            if (genre) {
-                searchUrl += `&subject=${genre}`;
-            }
+    if (selectedGenres.length > 0) {
+        const genresParam = selectedGenres.map(genre => `subject=${genre}`).join('&');
+        searchUrl += `&${genresParam}`;
+    }
 
-            fetch(searchUrl)
-                .then(response => response.json())
-                .then(data => {
-                    displayResults(data);
-                })
-                .catch(error => console.error('Error:', error));
-        }
+    fetch(searchUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayResults(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
 
         function displayResults(data) {
             const resultsDiv = document.getElementById('results');
