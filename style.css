@@ -1,0 +1,194 @@
+body {
+    background-color: #FFFCEB;
+    /* Page background color */
+  }
+  
+  .navbar {
+    background-color: #2D446E;
+    /* Navbar background color (dark blue) */
+  }
+  
+  .navbar-toggler-icon svg {
+    fill: #FFF;
+    /* Set the fill color to white */
+    width: 30px;
+    /* Adjust the size of the icon */
+    height: 30px;
+  }
+  
+  .navbar-brand,
+  .navbar-brand:focus,
+  .navbar-brand:hover {
+    color: #FFFCEB !important;
+    /* BookMatch color (light beige) */
+    font-family: 'Lexend', sans-serif;
+    /* Applying Lexend font */
+    font-weight: 600;
+    /* Adjust font-weight if needed */
+  }
+  
+  .navbar-nav .nav-link,
+  .navbar-nav .nav-link:focus,
+  .navbar-nav .nav-link:hover {
+    color: #FFFCEB !important;
+    /* Navbar elements color (light beige) */
+  }
+  
+  .cart-button {
+    background-color: #5CAF69;
+    color: #FFFCEB;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .navbar-nav {
+    align-items: center;
+  }
+  
+  .navbar-nav .nav-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quote-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .quote-image {
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .quote-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  
+  .btn-lets-read {
+    background-color: #5CAF69;
+    color: #FFFCEB;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    .quote-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .quote-image {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .gallery-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .image-gallery {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gallery-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .hidden-paragraph {
+    display: none;
+    text-align: justify;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .animate__fadeInDown {
+    --animate-duration: 1s;
+  }
+  
+  .animate__fadeIn {
+    --animate-duration: 1s;
+  }
+  
+  .animate__animated {
+    animation-fill-mode: both;
+    animation-duration: var(--animate-duration);
+  }
+  
+  .animate__hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .animate__visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .star {
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .star.filled {
+    color: gold;
+  }
+  
+  .card {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Adjustments for Skills You Gain */
+  .fadeInDelay {
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
