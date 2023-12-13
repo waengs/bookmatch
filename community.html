@@ -151,8 +151,8 @@
         </div>
     </div>
  
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -228,26 +228,24 @@
             ];
 
             function generateBookCards() {
-                const bookList = $("#bookList");
-                bookList.empty();
+        const bookList = $("#bookList");
+        bookList.empty();
 
-                books.forEach(book => {
-                    const book_id = book.title.replace(" ", "_")
-                    const card = $("<div>").addClass("col-md-4")
-                        .append($('<div class="card" style="width: 18rem;">')
-                            .append($("<div>").addClass("card-body")
-                                .append($("<h5>").addClass("card-title").text(book.title))
-                                .append($("<p>").addClass("card-text").text("Author: " + book.author))
-                                .append($("<img>").attr("src", book.image))
-                                .append($("<a>").addClass("btn btn-primary").attr("href", book.link).attr("target", "_blank").text("Read"))
-                                .append($("<button>").addClass("btn btn-success finishReading").attr("id", "finish_reading_" + book_id).text("Finish Reading"))
-                                .append($("<button>").addClass("btn btn-success editReview").attr("id", "edit_review_" + book_id).text("Edit").hide())
-                            )
-                        );
-                    bookList.append(card);
-
-                });
-            }
+        books.forEach(book => {
+            const card = $("<div>").addClass("col-md-4")
+                .append($('<div class="card" style="width: 18rem;">')
+                    .append($("<div>").addClass("card-body")
+                        .append($("<h5>").addClass("card-title").text(book.title))
+                        .append($("<p>").addClass("card-text").text("Author: " + book.author))
+                        .append($("<img>").addClass("card-img-top").attr("src", book.image).attr("alt", book.title))
+                        .append($("<a>").addClass("btn btn-primary").attr("href", book.link).attr("target", "_blank").text("Read"))
+                        .append($("<button>").addClass("btn btn-success finishReading").text("Finish Reading"))
+                        .append($("<button>").addClass("btn btn-success editReview").text("Edit").hide())
+                    )
+                );
+            bookList.append(card);
+        });
+    }
 
             generateBookCards();
 
