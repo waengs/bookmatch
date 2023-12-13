@@ -118,16 +118,7 @@ body {
     transition: all 0.3s ease;
   }
 
-    .card {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-        }
+  .fade-in {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}

@@ -128,37 +128,36 @@
   <div class="container my-5">
     <h2 class="text-center mb-4">Why You Should Read</h2>
     <div class="row">
-      <div class="col-md-12 mb-4">
-        <div class="card" style="opacity: 0; transition-delay: 0.5s;">
-          <img class="card-img-top" src="logo.png" alt="Image 1">
-          <div class="card-body">
-            <p class="card-text">A study by the American Academy of Neurology found that engaging in mentally
-              stimulating activities, like reading, can delay memory decline in elderly individuals by more than 30%.
-            </p>
-          </div>
+        <div class="col-md-4 mb-4">
+            <div class="card animate__animated fade-in" style="transition-delay: 0.5s;">
+                <img class="card-img-top" src="logo.png" alt="Image 1">
+                <div class="card-body">
+                    <p class="card-text">A study by the American Academy of Neurology found that engaging in mentally stimulating activities, like reading, can delay memory decline in elderly individuals by more than 30%.</p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-12 mb-4">
-        <div class="card" style="opacity: 0; transition-delay: 1.0s;">
-          <img class="card-img-top" src="logo.png" alt="Image 1">
-          <div class="card-body">
-            <p class="card-text">A study published in the journal Social Science & Medicine found that book readers have
-              a 20% lower risk of mortality over a 12-year period compared to non-readers.</p>
-          </div>
+        <!-- Repeat the structure for other cards with similar classes -->
+        <div class="col-md-4 mb-4">
+            <div class="card animate__animated fade-in" style="transition-delay: 0.7s;">
+                <img class="card-img-top" src="logo.png" alt="Image 2">
+                <div class="card-body">
+                    <p class="card-text">A study published in the journal Social Science & Medicine found that book readers have a 20% lower risk of mortality over a 12-year period compared to non-readers.</p>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-md-12 mb-4">
-        <div class="card" style="opacity: 0; transition-delay: 1.5s;">
-          <img class="card-img-top" src="logo.png" alt="Image 1">
-          <div class="card-body">
-            <p class="card-text">According to a study at the University of Sussex, reading for just six minutes can
-              reduce stress levels by up to 68%.</p>
-          </div>
+        <!-- Another card -->
+        <div class="col-md-4 mb-4">
+            <div class="card animate__animated fade-in" style="transition-delay: 0.8s;">
+                <img class="card-img-top" src="logo.png" alt="Image 3">
+                <div class="card-body">
+                    <p class="card-text">According to a study at the University of Sussex, reading for just six minutes can reduce stress levels by up to 68%.</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
+<center>
   <div class="container my-5">
     <h2 class="text-center mb-4">Skills You Gain</h2>
     <div class="d-flex flex-row">
@@ -191,6 +190,7 @@
       </div>
     </div>
   </div>
+</center>
 
   <div class="container">
     <h2>Do you have any Questions?</h2>
@@ -258,28 +258,26 @@
       });
     });
 
-    // Intersection Observer for fade-in animation
     const fadeInObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const cards = entry.target.querySelectorAll('.card');
-          cards.forEach(card => {
-            card.style.opacity = 1;
-          });
-          fadeInObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3
-    });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const cards = entry.target.querySelectorAll('.card');
+                    cards.forEach(card => {
+                        card.style.opacity = 1;
+                    });
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+        });
 
-    // Apply the observer to all elements with the '.container' class
-    const containers = document.querySelectorAll('.container');
-    containers.forEach(container => {
-      fadeInObserver.observe(container);
-    });
+        const containers = document.querySelectorAll('.container');
+        containers.forEach(container => {
+            fadeInObserver.observe(container);
+        });
   </script>
 </body>
 

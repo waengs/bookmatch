@@ -74,7 +74,6 @@
         <div class="container my-5">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card animate__animated animate__fadeInDown" data-mdb-animation-on-scroll="repeat">
                         <div class="card-body">
                             <p class="card-text animate__animated">Embark on a transformative journey to boost your
                                 reading
@@ -86,13 +85,45 @@
                                 storytelling, enhance
                                 critical thinking, and enrich your vocabulary while fostering a love for reading.</p>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-row flex-nowrap" id="bookList" style="overflow:auto">
-            <!-- Book cards will go here -->
+        <div class="container-fluid py-2">
+            <!-- ... (other content) ... -->
+            <div class="d-flex flex-row flex-nowrap" style="overflow:auto">
+                <div class="container">
+                    <div class="row" id="bookList">
+                        <!-- Book cards will go here -->
+                        <!-- Example for Book 1 -->
+                        <div class="col-md-4 mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Book 1</h5>
+                                    <p class="card-text">Author: Author 1</p>
+                                    <img class="card-img-top" src="#" alt="Book 1 Image">
+                                    <a href="https://example.com/book1" target="_blank" class="btn btn-primary">Read</a>
+                                    <button class="btn btn-success finishReading">Finish Reading</button>
+                                    <button class="btn btn-success editReview" style="display: none;">Edit</button>
+                                </div>
+                        </div>
+                        <!-- Repeat this structure for each book -->
+                        <!-- Example for Book 2 -->
+                        <div class="col-md-4 mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Book 2</h5>
+                                    <p class="card-text">Author: Author 2</p>
+                                    <img class="card-img-top" src="#" alt="Book 2 Image">
+                                    <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
+                                    <button class="btn btn-success finishReading">Finish Reading</button>
+                                    <button class="btn btn-success editReview" style="display: none;">Edit</button>
+                                </div>
+                        </div>
+                        <!-- Repeat for other books -->
+                    </div>
+                </div>
+            </div>
+            <!-- ... (other content) ... -->
         </div>
+        
     </div>
     <h2>Your reviews:</h2>
     <div class="container my-5" id="bookSummaries">
@@ -162,92 +193,6 @@
 
     <!-- Your custom JavaScript -->
     <script>
-        $(document).ready(function () {
-            const books = [
-                {
-                    title: "Book 1",
-                    author: "Author 1",
-                    image: "#",
-                    link: "https://example.com/book1"
-                },
-                {
-                    title: "Book 2",
-                    author: "Author 2",
-                    image: "#",
-                    link: "https://example.com/book2"
-                },
-                {
-                    title: "Book 3",
-                    author: "Author 3",
-                    image: "#",
-                    link: "https://example.com/book3"
-                },
-                {
-                    title: "Book 4",
-                    author: "Author 4",
-                    image: "#",
-                    link: "https://example.com/book4"
-                },
-                {
-                    title: "Book 5",
-                    author: "Author 5",
-                    image: "#",
-                    link: "https://example.com/book5"
-                },
-                {
-                    title: "Book 6",
-                    author: "Author 6",
-                    image: "#",
-                    link: "https://example.com/book6"
-                },
-                {
-                    title: "Book 7",
-                    author: "Author 7",
-                    image: "#",
-                    link: "https://example.com/book7"
-                },
-                {
-                    title: "Book 8",
-                    author: "Author 8",
-                    image: "#",
-                    link: "https://example.com/book8"
-                },
-                {
-                    title: "Book 9",
-                    author: "Author 9",
-                    image: "#",
-                    link: "https://example.com/book9"
-                },
-                {
-                    title: "Book 10",
-                    author: "Author 10",
-                    image: "#",
-                    link: "https://example.com/book10"
-                },
-                // Add more book objects here
-            ];
-
-            function generateBookCards() {
-        const bookList = $("#bookList");
-        bookList.empty();
-
-        books.forEach(book => {
-            const card = $("<div>").addClass("col-md-4")
-                .append($('<div class="card" style="width: 18rem;">')
-                    .append($("<div>").addClass("card-body")
-                        .append($("<h5>").addClass("card-title").text(book.title))
-                        .append($("<p>").addClass("card-text").text("Author: " + book.author))
-                        .append($("<img>").addClass("card-img-top").attr("src", book.image).attr("alt", book.title))
-                        .append($("<a>").addClass("btn btn-primary").attr("href", book.link).attr("target", "_blank").text("Read"))
-                        .append($("<button>").addClass("btn btn-success finishReading").text("Finish Reading"))
-                        .append($("<button>").addClass("btn btn-success editReview").text("Edit").hide())
-                    )
-                );
-            bookList.append(card);
-        });
-    }
-
-            generateBookCards();
 
             // Event delegation for handling "Finish Reading" button click
             $("#bookList").on("click", ".finishReading", function () {
@@ -336,7 +281,6 @@
                 $("#ratingModal").modal("hide");
             });
 
-        });
 
     </script>
 
