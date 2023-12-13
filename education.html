@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookMatch</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xrJwNVT4kqb61t0Fm5d5t0hwuOf3anIhjVkIO3lBu2XtPAI3wvb8cBMhLqUn1T6aIfKImL4avL2thaaJyIRcZQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+
+  <!--This Is The Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="#">BookMatch</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+            <path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
+              d="M4 7h22M4 15h22M4 23h22" />
+          </svg>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="education.html">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fiction.html">Fiction</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="community.html">Community</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">
+              <button class="btn cart-button">
+                <i class="fas fa-shopping-cart cart-icon"></i>
+                <span class="cart-label">Cart</span>
+              </button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <div class="container my-5">
+        <h1 class="mb-4">Book Search - Education</h1>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="searchInput" placeholder="Search for book title or author">
+            <button class="btn btn-primary" type="button" onclick="searchBooks()">Search</button>
+    </div>
+
+    <div class="row align-items-center mb-3">
+        <div class="col-md-6">
+            <form id="educationForm">
+                <div class="mb-3">
+                    <label class="form-label">Filter by Category:</label><br>
+                    <input type="radio" id="math" name="category" value="math">
+                    <label for="math">Math</label><br>
+                    <input type="radio" id="history" name="category" value="history">
+                    <label for="history">History</label><br>
+                    <input type="radio" id="chemistry" name="category" value="chemistry">
+                    <label for="chemistry">Chemistry</label><br>
+                    <input type="radio" id="biology" name="category" value="biology">
+                    <label for="biology">Biology</label><br>
+                    <input type="radio" id="physics" name="category" value="physics">
+                    <label for="physics">Physics</label><br>
+                    <input type="radio" id="computerScience" value="computerScience" name="category">
+                    <label for="computerScience">Computer Science</label><br>
+                    <input type="radio" id="art" value="art" name="category">
+                    <label for="art">Art</label><br>
+                    <input type="radio" id="music" value="music" name="category">
+                    <label for="music">Music</label><br>
+                    <input type="radio" id="biography" value="biography" name="category">
+                    <label for="biography">Biography</label><br>
+                    <input type="radio" id="classics" value="classics" name="category">
+                    <label for="classics">Classics</label><br>
+                    <input type="radio" id="philosophy" value="philosophy" name="category">
+                    <label for="philosophy">Philosophy</label><br>
+                    <input type="radio" id="sports" value="sports" name="category">
+                    <label for="sports">Sports</label><br>
+                    <input type="radio" id="business" value="business" name="category">
+                    <label for="business">Business</label><br>
+                    <input type="radio" id="poetry" value="poetry" name="category">
+                    <label for="poetry">Poetry</label><br>
+                    <input type="radio" id="psychology" value="psychology" name="category">
+                    <label for="psychology">Psychology</label><br>
+                    <input type="radio" id="selfHelp" value="selfHelp" name="category">
+                    <label for="selfHelp">Self Help</label><br>
+                    <input type="radio" id="travel" value="travel" name="category">
+                    <label for="travel">Travel</label><br>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+            <button class="btn btn-primary" onclick="filterSearch()">Filter Search</button>
+        </div>
+    </div>
+
+    <div id="results"></div>
+</div>
+
+    <script>
+        let selectedCategory = '';
+
+        document.getElementById('educationForm').addEventListener('change', function (event) {
+            selectedCategory = event.target.value;
+        });
+
+        function searchBooks() {
+            const searchText = document.getElementById('searchInput').value;
+            const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchText}${selectedCategory ? `+subject:${selectedCategory}` : ''}&maxResults=40`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    clearPreviousResults();
+                    separateBooksByPrice(data.items);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function filterSearch() {
+            const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${selectedCategory}&maxResults=40`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    clearPreviousResults();
+                    separateBooksByPrice(data.items);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function separateBooksByPrice(books) {
+            books.forEach(book => {
+                const title = book.volumeInfo.title;
+                const author = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author';
+                const description = book.volumeInfo.description ? book.volumeInfo.description : 'No description available';
+                const price = book.saleInfo && book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : null;
+                const cover = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150';
+
+                const bookDiv = document.createElement('div');
+                bookDiv.innerHTML = `
+                    <h3>${title}</h3>
+                    <p>Author(s): ${author}</p>
+                    <p>Price: ${price ? price : 'Price not available'}</p>
+                    <img src="${cover}" alt="Book cover">
+                    <p>Description: ${description}</p>
+                `;
+
+                const addButton = document.createElement('button');
+                addButton.textContent = price ? 'Add to Cart' : 'Add to Want to Read';
+                addButton.onclick = function () {
+                    const selectedBook = {
+                        title: title,
+                        author: author,
+                        description: description,
+                        cover: cover
+                    };
+
+                    if (price) {
+                        // Store book in cart
+                        addToCart(selectedBook);
+                    } else {
+                        // Store book in want to read list
+                        addToWantToRead(selectedBook);
+                    }
+                };
+
+                bookDiv.appendChild(addButton);
+                document.getElementById('results').appendChild(bookDiv);
+            });
+        }
+
+        function clearPreviousResults() {
+        document.getElementById('results').innerHTML = ''; // Clear previous search results
+        }
+
+        function addToCart(book) {
+            let cartItems = localStorage.getItem('cartItems');
+            cartItems = cartItems ? JSON.parse(cartItems) : [];
+            cartItems.push(book);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
+        function addToWantToRead(book) {
+            let wantToReadItems = localStorage.getItem('wantToReadItems');
+            wantToReadItems = wantToReadItems ? JSON.parse(wantToReadItems) : [];
+            wantToReadItems.push(book);
+            localStorage.setItem('wantToReadItems', JSON.stringify(wantToReadItems));
+        }
+
+        // Get the dropdown and prevent it from closing on click inside
+    const dropdown = document.getElementById('categoryDropdownContainer');
+    dropdown.addEventListener('click', function (event) {
+      event.stopPropagation();
+    });
+
+    // Close the dropdown on clicking outside
+    document.addEventListener('click', function (event) {
+      dropdown.classList.remove('show');
+    });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+
+  </script>
+</body>
+</html>
