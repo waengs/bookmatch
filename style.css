@@ -192,3 +192,19 @@ body {
       opacity: 1;
     }
   }
+
+  .scrolling-wrapper {
+    overflow-x: auto;
+    overflow-y: none;
+    white-space: nowrap;
+}
+
+.col-md-4 {
+    display: inline-block;
+    float: none;
+}
+
+.col {
+  flex: 0 0 auto;
+  width: 300px; /* Adjust the width according to your preference */
+}
