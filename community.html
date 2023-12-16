@@ -1,123 +1,126 @@
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookMatch</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Bootstrap Star Rating CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css"
-      rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-        integrity="sha512-xrJwNVT4kqb61t0Fm5d5t0hwuOf3anIhjVkIO3lBu2XtPAI3wvb8cBMhLqUn1T6aIfKImL4avL2thaaJyIRcZQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    <style>
-      /* Custom CSS to adjust the star rating appearance */
-      .rating-container .rating-stars {
-        font-size: 24px;
-        /* Adjust the font size to change star size */
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookMatch</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- Bootstrap Star Rating CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css"
+    rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-xrJwNVT4kqb61t0Fm5d5t0hwuOf3anIhjVkIO3lBu2XtPAI3wvb8cBMhLqUn1T6aIfKImL4avL2thaaJyIRcZQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Custom CSS to adjust the star rating appearance */
+    .rating-container .rating-stars {
+      font-size: 24px;
+      /* Adjust the font size to change star size */
+    }
 
-      .rating-container .rating-stars .rating-star {
-        color: #ffd700;
-        /* Set the color of the stars (e.g., yellow) */
-      }
+    .rating-container .rating-stars .rating-star {
+      color: #ffd700;
+      /* Set the color of the stars (e.g., yellow) */
+    }
 
-      .star {
-        font-size: 50px
-      }
-    </style>
-  </head>
+    .star {
+      font-size: 50px
+    }
+  </style>
+</head>
 
-  <body>
+<body>
 
-    <!--This Is The Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand mr-4" href="index.html">BookMatch</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-                        <path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
-                            d="M4 7h22M4 15h22M4 23h22" />
-                    </svg>
-                </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="education.html">Education</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="fiction.html">Fiction</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="community.html">Challenge</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cart.html">
-                            <button class="btn cart-button">
-                                <i class="fas fa-shopping-cart cart-icon"></i>
-                                <span class="cart-label">Your Collection</span>
-                            </button>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-    <div class="container-fluid py-4 text-center">
-        <h1>Book Reading Challenge</h1>
-        <div class="container my-5">
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="card text-center animate-paragraph">
-                        <div class="card-body">
-                            <p class="card-text">Embark on a transformative journey to boost your reading comprehension and literacy skills by selecting and summarizing ten diverse books. Engage with a variety of genres, from classic literature to contemporary fiction, and explore different cultures, perspectives, and themes. The challenge aims to deepen your understanding of storytelling, enhance critical thinking, and enrich your vocabulary while fostering a love for reading.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!--This Is The Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand mr-4" href="index.html">BookMatch</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+            <path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
+              d="M4 7h22M4 15h22M4 23h22" />
+          </svg>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="education.html">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="fiction.html">Fiction</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="community.html">Challenge</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">
+              <button class="btn cart-button">
+                <i class="fas fa-shopping-cart cart-icon"></i>
+                <span class="cart-label">Your Collection</span>
+              </button>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
+
+  <div class="container-fluid py-4 text-center">
+    <h1>Book Reading Challenge</h1>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="card text-center animate-paragraph">
+            <div class="card-body">
+              <p class="card-text">Embark on a transformative journey to boost your reading comprehension and literacy
+                skills by selecting and summarizing ten diverse books. Engage with a variety of genres, from classic
+                literature to contemporary fiction, and explore different cultures, perspectives, and themes. The
+                challenge aims to deepen your understanding of storytelling, enhance critical thinking, and enrich your
+                vocabulary while fostering a love for reading.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="d-flex flex-row flex-nowrap" id="bookList" style="overflow:auto">
     <!-- Book cards will go here -->
   </div>
   </div>
-    <div class="container my-5">
+  <div class="container my-5" style="background-color: white;">
     <h2 class="text-center mb-4">Your reviews:</h2>
-  <div class="container my-5" id="bookSummaries">
-    <!-- Reviews and summaries will go here -->
+    <div class="container my-5" id="bookSummaries">
+      <!-- Reviews and summaries will go here -->
+    </div>
   </div>
-  </div>
-    <div class="container my-5">
-        
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h3>After finishing this challenge you would have read...</h3>
-                        <p id="totalWordCount" class="mb-4">1,084,217 WORDS!!</p>
-                        <h3>That would have taken an average person...</h3>
-                        <p id="estimatedReadingTime">5421 minutes to finish</p>
-                    </div>
-                </div>
-            </div>
+  <div class="container my-5">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h3>After finishing this challenge you would have read...</h3>
+            <p id="totalWordCount" class="mb-4">1,084,217 WORDS!!</p>
+            <h3>That would have taken an average person...</h3>
+            <p id="estimatedReadingTime">5421 minutes to finish</p>
+          </div>
         </div>
+      </div>
     </div>
-    <div class="container my-5" id="congrats">
-        <img src="congrats.gif" class="img-fluid" alt="Your GIF" height="400">
-    </div>
+  </div>
+  <div class="container my-5" id="congrats">
+    <img src="congrats.gif" class="img-fluid" alt="Your GIF" height="400">
+  </div>
 
   <!-- Modal for rating and summary -->
   <div class="modal fade" id="ratingModal" tabindex="-1">
@@ -164,9 +167,9 @@
     </div>
   </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/addons/rating.js"></script>
 
   <!-- Your custom JavaScript -->
