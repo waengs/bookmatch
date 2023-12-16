@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
-    <title>Book Reading Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMatch</title>
     <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <!-- Bootstrap Star Rating CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/css/star-rating.min.css"
-        rel="stylesheet">
+      rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         integrity="sha512-xrJwNVT4kqb61t0Fm5d5t0hwuOf3anIhjVkIO3lBu2XtPAI3wvb8cBMhLqUn1T6aIfKImL4avL2thaaJyIRcZQ=="
@@ -16,354 +16,392 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Custom CSS to adjust the star rating appearance */
-        .rating-container .rating-stars {
-            font-size: 24px;
-            /* Adjust the font size to change star size */
-        }
+      /* Custom CSS to adjust the star rating appearance */
+      .rating-container .rating-stars {
+        font-size: 24px;
+        /* Adjust the font size to change star size */
+      }
 
-        .rating-container .rating-stars .rating-star {
-            color: #ffd700;
-            /* Set the color of the stars (e.g., yellow) */
-        }
+      .rating-container .rating-stars .rating-star {
+        color: #ffd700;
+        /* Set the color of the stars (e.g., yellow) */
+      }
+
+      .star {
+        font-size: 50px
+      }
     </style>
-</head>
+  </head>
 
-<body>
-  <!--This Is The Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <a class="navbar-brand mr-4" href="#">BookMatch</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
-            <path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
-              d="M4 7h22M4 15h22M4 23h22" />
-          </svg>
-        </span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="education.html">Education</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="fiction.html">Fiction</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="community.html">Community</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="cart.html">
-              <button class="btn cart-button">
-                <i class="fas fa-shopping-cart cart-icon"></i>
-                <span class="cart-label">Cart</span>
-              </button>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-    <div class="container-fluid py-2">
+  <body>
+
+    <!--This Is The Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand mr-4" href="index.html">BookMatch</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                        <path stroke="#FFF" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10"
+                            d="M4 7h22M4 15h22M4 23h22" />
+                    </svg>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="education.html">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fiction.html">Fiction</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="community.html">Challenge</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <button class="btn cart-button">
+                                <i class="fas fa-shopping-cart cart-icon"></i>
+                                <span class="cart-label">Your Collection</span>
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container-fluid py-4 text-center">
         <h1>Book Reading Challenge</h1>
         <div class="container my-5">
             <div class="row">
-                <div class="col-md-4 mb-4">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="card text-center animate-paragraph">
                         <div class="card-body">
-                            <p class="card-text animate__animated">Embark on a transformative journey to boost your
-                                reading
-                                comprehension and literacy skills by selecting and summarizing ten diverse books. Engage
-                                with a variety
-                                of genres, from classic literature to contemporary fiction, and explore different
-                                cultures,
-                                perspectives, and themes. The challenge aims to deepen your understanding of
-                                storytelling, enhance
-                                critical thinking, and enrich your vocabulary while fostering a love for reading.</p>
-                        </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid py-2">
-            <div class="scrolling-wrapper">
-                    <div class="row" id="bookList">
-                        <!-- Example for Book 1 -->
-                        <div class="col-md-4 mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Book 1</h5>
-                                    <p class="card-text">Author: Author 1</p>
-                                    <img class="card-img-top" src="#" alt="Book 1 Image">
-                                    <a href="https://example.com/book1" target="_blank" class="btn btn-primary">Read</a>
-                                    <button class="btn btn-success finishReading">Finish Reading</button>
-                                    <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                                </div>
-                        </div>
-                        <!-- Repeat this structure for each book -->
-                        <!-- Example for Book 2 -->
-                        <div class="col-md-4 mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Book 2</h5>
-                                    <p class="card-text">Author: Author 2</p>
-                                    <img class="card-img-top" src="#" alt="Book 2 Image">
-                                    <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
-                                    <button class="btn btn-success finishReading">Finish Reading</button>
-                                    <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                                </div>
-                        </div>
-
-                        <div class="col-md-4 mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Book 2</h5>
-                                <p class="card-text">Author: Author 2</p>
-                                <img class="card-img-top" src="#" alt="Book 2 Image">
-                                <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
-                                <button class="btn btn-success finishReading">Finish Reading</button>
-                                <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Book 2</h5>
-                                <p class="card-text">Author: Author 2</p>
-                                <img class="card-img-top" src="#" alt="Book 2 Image">
-                                <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
-                                <button class="btn btn-success finishReading">Finish Reading</button>
-                                <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Book 2</h5>
-                                <p class="card-text">Author: Author 2</p>
-                                <img class="card-img-top" src="#" alt="Book 2 Image">
-                                <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
-                                <button class="btn btn-success finishReading">Finish Reading</button>
-                                <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Book 2</h5>
-                                <p class="card-text">Author: Author 2</p>
-                                <img class="card-img-top" src="#" alt="Book 2 Image">
-                                <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
-                                <button class="btn btn-success finishReading">Finish Reading</button>
-                                <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Book 2</h5>
-                                <p class="card-text">Author: Author 2</p>
-                                <img class="card-img-top" src="#" alt="Book 2 Image">
-                                <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
-                                <button class="btn btn-success finishReading">Finish Reading</button>
-                                <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Book 2</h5>
-                                <p class="card-text">Author: Author 2</p>
-                                <img class="card-img-top" src="#" alt="Book 2 Image">
-                                <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
-                                <button class="btn btn-success finishReading">Finish Reading</button>
-                                <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Book 2</h5>
-                                <p class="card-text">Author: Author 2</p>
-                                <img class="card-img-top" src="#" alt="Book 2 Image">
-                                <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
-                                <button class="btn btn-success finishReading">Finish Reading</button>
-                                <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Book 2</h5>
-                                <p class="card-text">Author: Author 2</p>
-                                <img class="card-img-top" src="#" alt="Book 2 Image">
-                                <a href="https://example.com/book2" target="_blank" class="btn btn-primary">Read</a>
-                                <button class="btn btn-success finishReading">Finish Reading</button>
-                                <button class="btn btn-success editReview" style="display: none;">Edit</button>
-                            </div>
+                            <p class="card-text">Embark on a transformative journey to boost your reading comprehension and literacy skills by selecting and summarizing ten diverse books. Engage with a variety of genres, from classic literature to contemporary fiction, and explore different cultures, perspectives, and themes. The challenge aims to deepen your understanding of storytelling, enhance critical thinking, and enrich your vocabulary while fostering a love for reading.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        
-    </div>
-    <h2>Your reviews:</h2>
-    <div class="container my-5" id="bookSummaries">
-        <!-- Reviews and summaries will go here -->
-    </div>
-    <div id="progress">
-        <div class="col-lg-12">
-            Progress report: <br>
-            You have read ---- words! <br>
-            Fun fact! The average time to read that many words is ---- minutes!
         </div>
     </div>
-
-    <!-- Modal for rating and summary -->
-    <div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="ratingModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ratingModalLabel">Rate This Book</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4>Rate the book:</h4>
-                                <input type="number" id="ratingInput" name="rating" min="1" max="5">
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="rating">
-                                    <span class="star" id="star1">★</span>
-                                    <span class="star" id="star2">★</span>
-                                    <span class="star" id="star3">★</span>
-                                    <span class="star" id="star4">★</span>
-                                    <span class="star" id="star5">★</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="review">Review (at least 100 words):</label>
-                            <textarea class="form-control" id="review" rows="6" required></textarea>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" id="saveRating">Save</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <div class="d-flex flex-row flex-nowrap" id="bookList" style="overflow:auto">
+    <!-- Book cards will go here -->
+  </div>
+  </div>
+    <div class="container my-5">
+    <h2 class="text-center mb-4">Your reviews:</h2>
+  <div class="container my-5" id="bookSummaries">
+    <!-- Reviews and summaries will go here -->
+  </div>
+  </div>
+    <div class="container my-5">
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>After finishing this challenge you would have read...</h3>
+                        <p id="totalWordCount" class="mb-4">1,084,217 WORDS!!</p>
+                        <h3>That would have taken an average person...</h3>
+                        <p id="estimatedReadingTime">5421 minutes to finish</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
- 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap JS and jQuery -->
+    <div class="container my-5" id="congrats">
+        <img src="congrats.gif" class="img-fluid" alt="Your GIF" height="400">
+    </div>
+
+  <!-- Modal for rating and summary -->
+  <div class="modal fade" id="ratingModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ratingModalLabel">Rate This Book</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="x_button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="row">
+              <div class="col-sm-12" style="height: 27px">
+                <h4>Rate the book:</h4>
+                <input type="number" id="ratingInput" name="rating" min="1" max="5" value="1"
+                  style="visibility: hidden; height: 0px">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="rating">
+                  <span class="star" id="star1">★</span>
+                  <span class="star" id="star2">★</span>
+                  <span class="star" id="star3">★</span>
+                  <span class="star" id="star4">★</span>
+                  <span class="star" id="star5">★</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="review">Review (at least 100 words):</label>
+              <textarea class="form-control" id="review" rows="6" required></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="saveRating" disabled>Save</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close_button">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Bootstrap Star Rating JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.6/js/star-rating.min.js"></script>
-    <script src="js/addons/rating.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/addons/rating.js"></script>
 
-    <!-- Your custom JavaScript -->
-    <script>
+  <!-- Your custom JavaScript -->
+  <script>
+    $(document).ready(function () {
+      const books = [
+        {
+          title: "School for Good and Evil",
+          author: "Soman Chainani",
+          image: "book1.jpg",
+          wordcount: 105365,
+          link: "https://www.google.co.id/books/edition/The_School_for_Good_and_Evil/Y8MTHn6j9W4C?hl=en&gbpv=0"
+        },
+        {
+          title: "The Book Thief",
+          author: "Markus Zusak",
+          image: "book2.jpg",
+          wordcount: 118933,
+          link: "https://www.google.co.id/books/edition/The_Book_Thief/veGXULZK6UAC?hl=en&gbpv=1&dq=the+book+thief&printsec=frontcover"
+        },
+        {
+          title: "Crazy Rich Asians",
+          author: "Kevin Kwan",
+          image: "book3.jpg",
+          wordcount: 116311,
+          link: "https://www.google.co.id/books/edition/The_Seven_Husbands_of_Evelyn_Hugo/cPlBEAAAQBAJ?hl=en&gbpv=0"
+        },
+        {
+          title: "Don Quixote",
+          author: "Miguel Saavedra",
+          image: "book4.jpg",
+          wordcount: 345390,
+          link: "https://www.google.co.id/books/edition/Don_Quixote/BupDAAAAcAAJ?hl=en&gbpv=1&dq=don+quixote&printsec=frontcover"
+        },
+        {
+          title: "Heartstopper",
+          author: "Alice Oseman",
+          image: "book5.jpg",
+          wordcount: 86112,
+          link: "https://www.google.co.id/books/edition/Heartstopper/MvcUyAEACAAJ?hl=en"
+        },
+        {
+          title: "Mockingbird",
+          author: "Kathryn Erskine",
+          image: "book6.jpg",
+          wordcount: 36466,
+          link: "https://www.google.co.id/books/edition/Mockingbird/SzF8AwAAQBAJ?hl=en&gbpv=1&dq=mockingbird&printsec=frontcover"
+        },
+        {
+          title: "A Study in Scarlet",
+          author: "Arthur Conan Doyle",
+          image: "book7.jpg",
+          wordcount: 43167,
+          link: "https://www.google.co.id/books/edition/A_Study_in_Scarlet_Illustrated/M1P7zQEACAAJ?hl=en"
+        },
+        {
+          title: "Yellowface",
+          author: "Rebecca F Kuang",
+          image: "book8.jpg",
+          wordcount: 21500,
+          link: "https://www.google.co.id/books/edition/Yellowface/crZ1EAAAQBAJ?hl=en&gbpv=1&dq=yellowface&printsec=frontcover"
+        },
+        {
+          title: "The House of Silk",
+          author: "Anthony Horowitz",
+          image: "book9.jpg",
+          wordcount: 94662,
+          link: "https://www.google.co.id/books/edition/The_House_of_Silk/rf02AQAAQBAJ?hl=en&gbpv=0"
+        },
+        {
+          title: "They Both Die At The End",
+          author: "Adam Silvera",
+          image: "book10.jpg",
+          wordcount: 116311,
+          link: "https://www.google.co.id/books/edition/They_Both_Die_at_the_End/5pSyDQAAQBAJ?hl=en&gbpv=1&dq=they+both+die+at+the+end&printsec=frontcover"
+        },
+        // Add more book objects here
+      ];
 
-            // Event delegation for handling "Finish Reading" button click
-            $("#bookList").on("click", ".finishReading", function () {
-                const bookTitle = $(this).closest(".card-body").find(".card-title").text();
-                $("#ratingModal .modal-title").text(`Rate "${bookTitle}"`);
-                $("#ratingModal").modal("show");
-            });
+      function generateBookCards() {
+        const bookList = $("#bookList");
+        bookList.empty();
 
-            $("#bookList").on("click", ".editReview", function () {
-                const bookTitle = $(this).closest(".card-body").find(".card-title").text();
-                $("#ratingModal .modal-title").text(`Rate "${bookTitle}"`);
-                $("#ratingModal").modal("show");
-            });
+        books.forEach(book => {
+          const book_id = book.title.replace(/\s/g, "_")
+          const card = $("<div>").addClass("col-md-4")
+            .append($('<div class="card text-center" style="width: 18rem;">')
+              .append($("<div>").addClass("card-body")
+                .append($("<h5>").addClass("card-title").text(book.title))
+                .append($("<p>").addClass("card-text").text("Author: " + book.author))
+                .append($("<div>").addClass("image-container")
+                  .append($("<img>").attr("src", book.image).addClass("book-image")))
+                .append($("<br>"))
+                .append($("<a>").addClass("btn btn-primary").attr("href", book.link).attr("target", "_blank").text("Read"))
+                .append($("<button>").addClass("btn btn-success finishReading").attr("id", "finish_reading_" + book_id).text("Finish Reading"))
+                .append($("<button>").addClass("btn btn-success editReview").attr("id", "edit_review_" + book_id).text("Edit").hide())
+              )
+            );
+          bookList.append(card);
 
-            $('.star').on('click', function () {
-                var selectedStar = $(this).attr('id').substring(4); // Extract the number from the star ID
-                $('.star').removeClass('filled');
+        });
+      }
 
-                for (var i = 1; i <= selectedStar; i++) {
-                    $('#star' + i).addClass('filled');
-                }
+      generateBookCards();
 
-                $('#ratingInput').val(selectedStar); // Set the value of the input field to the selected rating
-            });
+      // Event delegation for handling "Finish Reading" button click
+      $("#bookList").on("click", ".finishReading", function () {
+        const bookTitle = $(this).closest(".card-body").find(".card-title").text();
+        $("#ratingModal .modal-title").text(`Rate "${bookTitle}"`);
+        $("#ratingModal").modal("show");
+        $('#ratingInput').val(1);
+        $('#star1').click();
+        $('#review').val('');
+      });
 
-            $('#ratingInput').on('change', function () {
-                var rating = $(this).val();
-                $('.star').removeClass('filled');
+      $("#bookList").on("click", ".editReview", function () {
+        const bookTitle = $(this).closest(".card-body").find(".card-title").text();
+        const bookId = bookTitle.replace(/\s/g, '_');
 
-                for (var i = 1; i <= rating; i++) {
-                    $('#star' + i).addClass('filled');
-                }
-            });
+        $('#ratingInput').val($(`#star_rating_${bookId}`).text()).trigger('change');
+        $('#review').val($(`#book_review_${bookId}`).text());
+        $("#ratingModal .modal-title").text(`Rate "${bookTitle}"`);
+        $("#ratingModal").modal("show");
+      });
 
-            $("#saveRating").on("click", function () {
-                var rating = $("#ratingInput").val();
-                var review = $("#review").val();
-                const bookTitle = $("#ratingModal .modal-title").text().replace('Rate "', '').replace('"', '');
-                const bookId = bookTitle.replace(' ', '_');
-                
-                function createReview() {
-                    let accordion = $(`<div class="accordion accordion-flush" id="${bookId}"></div>`);
-                    let accordion_header = $(`
-                        <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#${bookId}_review" aria-expanded="false" aria-controls="flush-collapseOne">
-                            ${bookTitle} 
-                        </button>
-                        </h2>
-                    `);
-                    let accordion_body = $(`
-                        <div id="${bookId}_review" class="accordion-collapse collapse" data-parent="#${bookId}">
-                            ${rating}/5 <br> ${review}
-                        </div>
-                    `);
+      $('.star').on('click', function () {
+        var selectedStar = $(this).attr('id').substring(4); // Extract the number from the star ID
+        $('.star').removeClass('filled');
 
-                    // Add accordion to display book review and rating
-                    accordion.append(accordion_header, accordion_body);
-                    $('#bookSummaries').append(accordion);
+        for (var i = 1; i <= selectedStar; i++) {
+          $('#star' + i).addClass('filled');
+        }
 
-                    // Change "Finish Reading" button
-                    $(`#finish_reading_${bookId}`).hide();
+        $('#ratingInput').val(selectedStar); // Set the value of the input field to the selected rating
+      });
 
-                    // Show edit button
-                    $(`#edit_review_${bookId}`).show();
-                }
+      $('#ratingInput').on('change', function () {
+        var rating = $(this).val();
 
-                function editReview() {
-                    var rating = $("#ratingInput").val();
-                    var review = $("#review").val();
+        $('.star').removeClass('filled');
 
-                    $(`#${bookId}_review`).html(`${rating}/5 <br> ${review}`)
-                }
-                
-                if ($(`#${bookId}_review`).length === 0) {
-                    createReview();
-                }
-                else {
-                    editReview();
-                }
+        for (var i = 1; i <= rating; i++) {
+          $('#star' + i).addClass('filled');
+        }
+      });
 
-                // Clear the modal inputs
-                $("#ratingInput").val("");
-                $("#review").val("");
-
-                // Close the modal
-                $("#ratingModal").modal("hide");
-            });
+      $("#saveRating").on("click", function () {
+        var rating = $("#ratingInput").val();
+        var review = $("#review").val();
+        const bookTitle = $("#ratingModal .modal-title").text().replace('Rate "', '').replace('"', '');
+        const bookId = bookTitle.replace(/\s/g, '_');
 
 
-    </script>
+        $("#progress").append()
+
+        function createReview() {
+          let accordion = $(`<div class="accordion accordion-flush" id="${bookId}"></div>`);
+          let accordion_header = $(`
+                          <h2 class="accordion-header">
+                              <button class="accordion-button collapsed" type="button" data-toggle="collapse" data-target="#${bookId}_review" aria-expanded="false" aria-controls="flush-collapseOne">
+                                  ${bookTitle} 
+                              </button>
+                          </h2>
+                      `);
+          let accordion_body = $(`
+                          <div id="${bookId}_review" class="accordion-collapse collapse" data-parent="#${bookId}">
+                              <span id="star_rating_${bookId}">${rating}</span>/5 <br> <span id="book_review_${bookId}">${review}</span>
+                          </div>
+                      `);
+
+
+
+          // Add accordion to display book review and rating
+          accordion.append(accordion_header, accordion_body);
+          $('#bookSummaries').append(accordion);
+
+          // Change "Finish Reading" button
+          $(`#finish_reading_${bookId}`).hide();
+
+          // Show edit button
+          $(`#edit_review_${bookId}`).show();
+
+          // Recalculate and update word count after adding/editing a review
+          updateDisplay();
+        }
+
+        function editReview() {
+          var rating = $("#ratingInput").val();
+          var review = $("#review").val();
+
+          $(`#${bookId}_review`).html(`<span id="star_rating_${bookId}">${rating}</span>/5 <br> <span id="book_review_${bookId}">${review}</span>`)
+        }
+
+        if ($(`#${bookId}_review`).length === 0) {
+          createReview();
+        }
+
+        else if ($(`#${bookId}_review`).length !== 0) {
+          editReview();
+        }
+
+        // Clear the modal inputs
+        $("#ratingInput").val("");
+        $("#review").val("");
+
+        // Close the modal
+        $("#ratingModal").modal("hide");
+      });
+
+      $('#review').on('input', function () {
+
+        let review = $('#review').val();
+        let regex = /[^\s]+/g;
+        let wordCount = (review.match(regex) || []).length;
+
+        if (wordCount >= 100) {
+          $("#saveRating").prop('disabled', false);
+        }
+
+        else {
+          $("#saveRating").prop('disabled', true);
+        }
+      })
+
+      $('#x_button').on('click', function () {
+        $("#ratingModal").modal("hide");
+      })
+
+      $('#close_button').on('click', function () {
+        $("#ratingModal").modal("hide");
+      })
+    });
+
+  </script>
 
 </body>
+
 </html>

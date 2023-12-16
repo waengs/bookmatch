@@ -54,22 +54,31 @@ body {
 
 .navbar-nav .nav-link,
 .navbar-nav .nav-link:focus,
-.navbar-nav .nav-link:hover {
+.navbar-nav {
   color: #FFFCEB !important;
 }
 
+.nav-link:hover{
+  background-color:#C3CFDF;
+  color: #2D446E !important
+}
+
 .cart-button {
-  background-color: #5CAF69;
-  color: #FFFCEB;
+  background-color: #5CAF69 !important;
+  color: #FFFCEB !important;
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
   font-size: 1rem;
-  font-weight: bold;
   display: block;
 }
 
 .navbar-nav .nav-item {
   display: flex;
   align-items: center;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  text-decoration: underline; /* Underline to indicate active tab */
+  font-weight: bold; /* Optionally make the text bold */
 }

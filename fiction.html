@@ -18,7 +18,7 @@
   <!--This Is The Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand mr-4" href="#">BookMatch</a>
+      <a class="navbar-brand mr-4" href="index.html">BookMatch</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
@@ -30,23 +30,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.html">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="education.html">Education</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="fiction.html">Fiction</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="community.html">Community</a>
+            <a class="nav-link" href="community.html">Challenge</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="cart.html">
               <button class="btn cart-button">
                 <i class="fas fa-shopping-cart cart-icon"></i>
-                <span class="cart-label">Cart</span>
+                <span class="cart-label">Your Collection</span>
               </button>
             </a>
           </li>
@@ -149,7 +149,7 @@
                 `;
 
                 const addButton = document.createElement('button');
-                addButton.textContent = price ? 'Add to Cart' : 'Add to Want to Read';
+                addButton.textContent = price ? 'Add to Cart' : 'Add to Library';
                 addButton.onclick = function () {
                     const selectedBook = {
                         title: title,
@@ -173,21 +173,55 @@
             });
         }
       
-      function addToCart(book) {
-          let cartItems = localStorage.getItem('cartItems');
-          cartItems = cartItems ? JSON.parse(cartItems) : [];
+        function addToCart(book) {
+            let cartItems = localStorage.getItem('cartItems');
+            cartItems = cartItems ? JSON.parse(cartItems) : [];
 
-          const found = cartItems.some(item => item.title === book.title);
-          if (!found) {
-              console.log("Price:", book.price); // Add this line for debugging
-              cartItems.push(book);
-              localStorage.setItem('cartItems', JSON.stringify(cartItems));
-              document.getElementById('cartItems').textContent = 'Book added to cart!';
-              displayCart(); // Update the displayed cart items
-          } else {
-              document.getElementById('cartItems').textContent = 'Book already in cart!';
-          }
-      }
+            const foundCart = cartItems.some(item => item.title === book.title);
+            if (!foundCart) {
+                // Ensure that the book object includes the price
+                const bookWithPrice = {
+                    title: book.title,
+                    author: book.author,
+                    description: book.description,
+                    cover: book.cover,
+                    price: book.price // Include the price in the book object
+                };
+
+                cartItems.push(bookWithPrice); // Add the book with price to the cart
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                document.getElementById('cartItems').textContent = 'Book added to cart!';
+                displayCart(); // Update the displayed cart items
+            } else {
+                document.getElementById('cartItems').textContent = 'Book already in cart!';
+            }
+        }
+
+        function addToWantToRead(book) {
+            let wantToReadItems = localStorage.getItem('wantToReadItems');
+            wantToReadItems = wantToReadItems ? JSON.parse(wantToReadItems) : [];
+            
+            const foundLib = wantToReadItems.some(item => item.title === book.title);
+            if (!foundLib) {
+                // Ensure that the book object includes the price
+                const bookWithPrice = {
+                    title: book.title,
+                    author: book.author,
+                    description: book.description,
+                    cover: book.cover,
+                    price: book.price // Include the price in the book object
+                };
+
+                wantToReadItems.push(bookWithPrice); // Add the book with price to the library
+                localStorage.setItem('wantToReadItems', JSON.stringify(wantToReadItems));
+                document.getElementById('wantToReadItems').textContent = 'Book added to library!';
+                displayLibrary(); // Update the displayed library items
+            } else {
+                document.getElementById('wantToReadItems').textContent = 'Book already in library!';
+            }
+            wantToReadItems.push(book);
+            localStorage.setItem('wantToReadItems', JSON.stringify(wantToReadItems));
+        }
 
       
       function clearPreviousResults() {
