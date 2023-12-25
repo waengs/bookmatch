@@ -137,13 +137,14 @@
                 const author = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author';
                 const description = book.volumeInfo.description ? book.volumeInfo.description : 'No description available';
                 const price = book.saleInfo && book.saleInfo.listPrice ? book.saleInfo.listPrice.amount : null;
+                const formattedPrice = price ? `Rp ${price}` : 'Price not available';
                 const cover = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150';
 
                 const bookDiv = document.createElement('div');
                 bookDiv.innerHTML = `
                     <h3>${title}</h3>
                     <p>Author(s): ${author}</p>
-                    <p>Price: ${price ? price : 'Price not available'}</p>
+                    <p>Price: ${formattedPrice}</p>
                     <img src="${cover}" alt="Book cover">
                     <p>Description: ${description}</p>
                 `;
