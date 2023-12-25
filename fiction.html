@@ -54,7 +54,7 @@
       </div>
     </div>
   </nav>
-  
+
   <div class="container my-5">
       <h1 class="mb-4">Book Search</h1>
       <div class="input-group mb-3">
@@ -80,9 +80,7 @@
                   </ul>
               </div>
           </div>
-          <div class="col-md-6 d-flex justify-content-end">
-              <button class="btn btn-primary" onclick="filterSearch()">Filter Search</button>
-          </div>
+          
       </div>
 
       <div id="results"></div>
@@ -118,18 +116,7 @@
                 .catch(error => console.error('Error:', error));
         }
 
-        function filterSearch() {
-            const subjects = selectedCategories.join('|');
-            const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${subjects}&maxResults=40`;
-
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    clearPreviousResults();
-                    separateBooksByPrice(data.items);
-                })
-                .catch(error => console.error('Error:', error));
-        }
+        
 
         function separateBooksByPrice(books) {
             books.forEach(book => {
@@ -173,7 +160,7 @@
                 document.getElementById('results').appendChild(bookDiv);
             });
         }
-      
+
         function addToCart(book) {
             let cartItems = localStorage.getItem('cartItems');
             cartItems = cartItems ? JSON.parse(cartItems) : [];
@@ -201,19 +188,18 @@
         function addToWantToRead(book) {
             let wantToReadItems = localStorage.getItem('wantToReadItems');
             wantToReadItems = wantToReadItems ? JSON.parse(wantToReadItems) : [];
-            
+
             const foundLib = wantToReadItems.some(item => item.title === book.title);
             if (!foundLib) {
-                // Ensure that the book object includes the price
                 const bookWithPrice = {
                     title: book.title,
                     author: book.author,
                     description: book.description,
                     cover: book.cover,
-                    price: book.price // Include the price in the book object
+                    price: book.price 
                 };
 
-                wantToReadItems.push(bookWithPrice); // Add the book with price to the library
+                wantToReadItems.push(bookWithPrice); 
                 localStorage.setItem('wantToReadItems', JSON.stringify(wantToReadItems));
                 document.getElementById('wantToReadItems').textContent = 'Book added to library!';
                 displayLibrary(); // Update the displayed library items
@@ -224,7 +210,7 @@
             localStorage.setItem('wantToReadItems', JSON.stringify(wantToReadItems));
         }
 
-      
+
       function clearPreviousResults() {
         document.getElementById('results').innerHTML = ''; // Clear previous search results
         }
