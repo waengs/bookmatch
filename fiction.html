@@ -96,22 +96,23 @@
             // Update selected categories array
             const index = selectedCategories.indexOf(category);
             if (index === -1) {
-                selectedCategories.push(category);
+                selectedCategories.push(category); //add category
             } else {
-                selectedCategories.splice(index, 1);
+                selectedCategories.splice(index, 1); // remove category
             }
         }
+      // search google API (include search box and filters)
         function searchBooks() {
             const searchText = document.getElementById('searchInput').value;
             const subjects = selectedCategories.join('|');
-
+// google api search for 40 books
             const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${searchText}${subjects ? `+subject:${subjects}` : ''}&maxResults=40`;
-
+// fetch the books from API
             fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
                     clearPreviousResults();
-                    separateBooksByPrice(data.items);
+                    separateBooksByPrice(data.items); // this cuz we want add to cart and add to library
                 })
                 .catch(error => console.error('Error:', error));
         }
@@ -120,6 +121,7 @@
 
         function separateBooksByPrice(books) {
             books.forEach(book => {
+              //extract info on books
                 const title = book.volumeInfo.title;
                 const author = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author';
                 const description = book.volumeInfo.description ? book.volumeInfo.description : 'No description available';
@@ -127,6 +129,7 @@
                 const formattedPrice = price ? `Rp ${price}` : 'Price not available';
                 const cover = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://via.placeholder.com/150';
 
+              // to display the books
                 const bookDiv = document.createElement('div');
                 bookDiv.innerHTML = `
                     <h3>${title}</h3>
@@ -136,6 +139,7 @@
                     <p>Description: ${description}</p>
                 `;
 
+              // buttons to add to cart and add to library
                 const addButton = document.createElement('button');
                 addButton.textContent = price ? 'Add to Cart' : 'Add to Library';
                 addButton.onclick = function () {
@@ -157,7 +161,7 @@
                 };
 
                 bookDiv.appendChild(addButton);
-                document.getElementById('results').appendChild(bookDiv);
+                document.getElementById('results').appendChild(bookDiv); //display book info
             });
         }
 
@@ -178,11 +182,9 @@
 
                 cartItems.push(bookWithPrice); // Add the book with price to the cart
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                document.getElementById('cartItems').textContent = 'Book added to cart!';
+                document.getElementById('cartItems')
                 displayCart(); // Update the displayed cart items
-            } else {
-                document.getElementById('cartItems').textContent = 'Book already in cart!';
-            }
+            } 
         }
 
         function addToWantToRead(book) {
