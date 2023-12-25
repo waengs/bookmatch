@@ -95,9 +95,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-6 d-flex justify-content-end">
-                <button class="btn btn-primary" onclick="filterSearch()">Filter Search</button>
-            </div>
+            
         </div>
 
         <div id="results"></div>
@@ -131,17 +129,7 @@
                 .catch(error => console.error('Error:', error));
         }
 
-        function filterSearch() {
-            const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=subject:${selectedCategory}&maxResults=40`;
-
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    clearPreviousResults();
-                    separateBooksByPrice(data.items);
-                })
-                .catch(error => console.error('Error:', error));
-        }
+        
 
       function separateBooksByPrice(books) {
       books.forEach(book => {
