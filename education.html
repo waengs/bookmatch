@@ -195,11 +195,9 @@
 
                 cartItems.push(bookWithPrice); // Add the book with price to the cart
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                document.getElementById('cartItems').textContent = 'Book added to cart!';
+                document.getElementById('cartItems');
                 displayCart(); // Update the displayed cart items
-            } else {
-                document.getElementById('cartItems').textContent = 'Book already in cart!';
-            }
+            } 
         }
 
         function addToWantToRead(book) {
