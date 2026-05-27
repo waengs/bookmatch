@@ -749,6 +749,15 @@ export default function App() {
               </button>
             </div>
             <div className="fiction-category-grid">
+              <button
+                type="button"
+                className={`fiction-chip ${
+                  fictionCategoriesSelected.length === 0 ? "selected" : ""
+                }`}
+                onClick={() => setFictionCategoriesSelected([])}
+              >
+                All Categories
+              </button>
               {fictionCategories.map((item) => {
                 const isSelected = fictionCategoriesSelected.includes(item);
                 return (
